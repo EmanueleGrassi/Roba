@@ -1,0 +1,61 @@
+---------
+Completo
+---------
+
+COMPLETO(t)
+
+if t==null
+	Errore: albero vuoto
+return RIC(t.root)
+______
+RIC(n)
+
+if n == null
+	return true
+if n.left == null && n.right == null
+	return true
+else if n.left != null && n.right != null
+	l = RIC(n.left) && RIC(n.right)
+     else
+	return false
+
+---------
+DEALLOCA
+---------
+
+DEALLOCA(t)
+
+RIC(t.root)
+______
+RIC(n)
+
+if n == null
+	return
+
+RIC(n.left)
+RIC(n.right)
+
+if n.left == null && n.right == null
+	free(n)
+
+
+-----
+POTA
+scrivi la procedura POTA(t,h) che poti un albero binario
+lasciando solamente i nodi a profondità minore di h
+-----
+POTA(t,h)
+
+RIC(t.root,h)
+______
+RIC(n,h)
+
+if n==null
+	return
+
+if HEIGHT(n) == h
+	n.left = null
+	n.right = null
+	return
+RIC(n.left,h)
+RIC(n.right,h)
