@@ -48,7 +48,7 @@ con s = stringa da inserire
 -leggere caratteri secondo uno specifico formato
 
 int fscanf(FILE *pf, str_cont, elementi)  >ritorna il numero di caratteri letti, se errore EOF
-con str_cont = stringa di contesto (es: "%d %s")
+con str_cont = stringa di contesto (es: "%d %s\n")
 elementi = variabili in cui verranno salvati i caratteri (dall'esempio di sopra avrò bisogno di mettere come elementi un intero e una stringa)
 
 
@@ -77,7 +77,7 @@ un file ad accesso casuale presenta record di lunghezza fissa.
 -leggere oggetti
 
 int fread(void *buf, int size, int count, FILE *fp)  >ritorna il numero di oggetti letti
-con *buf = puntatore ad una regione di memoria dove saranno archiviati i dati
+con *buf = puntatore ad una regione di memoria dove saranno archiviati i dati(la struttura di solito)
 size = lunghezza del singolo dato (sizeof)
 count = quanti oggetti leggere
 
