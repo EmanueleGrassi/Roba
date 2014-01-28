@@ -224,7 +224,7 @@ PARENTELA(n1,n2) // n1 e n2 diverso da NULL
 		x1 = x1.next
 		x2 = x2.next
 		ELIM-PRIMO(L1)
-		ELIM-PRIMO(L1)
+		ELIM-PRIMO(L2)
 	return LUNG(L1)+LUNG(L2)
 
 ANTENATI(n,L)
@@ -243,9 +243,9 @@ ELIM-PRIMO(L)
 	l.head = l.head.next
 
 LUNG(L)
-	/*Crea un nodo n e un int cont*/
+	/*Crea un nodo x e un int cont*/
 	cont = 0
-	n = L.head
+	x = L.head
 	while(x != NULL)
 		cont++
 		x = x.next
@@ -300,6 +300,9 @@ RIC(n,k)
 		return n;
 	left = RIC(n.left)
 	right = RIC(n.right)
+	if (left == NULL)
+		return right
+	return left
 
 ----------------
 BINARIO(t)
