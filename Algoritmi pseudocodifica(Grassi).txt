@@ -35,15 +35,14 @@ if n == null
 RIC(n.left)
 RIC(n.right)
 
-if n.left == null && n.right == null
-	free(n)
+free(n)
 
 
------
+--------------------------------------------------------
 POTA
 scrivi la procedura POTA(t,h) che poti un albero binario
 lasciando solamente i nodi a profondità minore di h
------
+--------------------------------------------------------
 POTA(t,h)
 
 RIC(t.root,h)
@@ -59,3 +58,87 @@ if HEIGHT(n) == h
 	return
 RIC(n.left,h)
 RIC(n.right,h)
+
+
+---------------------
+PARENTETICA-PREORDINE
+---------------------
+PARENTETICA-PREORDINE(t)
+
+RIC(t.root)
+
+______
+RIC(n)
+
+if(r = NULL)
+		print("()")
+	else
+		print("(")
+		print(r.info)
+		ric(r.left)
+		ric(r.right)
+		print(")")
+
+
+------------
+DUE-FIGLI(t)
+------------
+DUE-FIGLI(t)
+
+RIC(t.root)
+
+______
+RIC(n)
+
+if n == null
+	return 0
+l = RIC(n.left)
+r = RIC(n.right)
+
+if PROPRIETA-FIGLI(n)
+	return 1+l+r
+else
+	return l+r
+
+
+PROPRIETA-FIGLI(k)
+
+if k == null
+	return false
+
+if k.left != null && k.right != null
+	return true
+return false
+
+
+--------------
+QUATTRO-NIPOTI
+--------------
+QUATTRONIPOTI(t)
+
+RIC(t.root)
+
+______
+RIC(n)
+
+if n == null
+	return 0
+l = RIC(n.left)
+r = RIC(n.right)
+
+if PROPRIETA-NONNI(n)
+	return 1+l+r
+else
+	return l+r
+
+PROPRIETA-NONNI(k)
+
+if k == null
+	return false
+
+if PROPRIETA-FIGLI(k.left) && PROPRIETA-FIGLI(k.right)
+	return true
+return false
+
+
+		
