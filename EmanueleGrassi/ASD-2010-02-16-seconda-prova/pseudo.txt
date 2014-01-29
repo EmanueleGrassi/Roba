@@ -30,8 +30,31 @@ for l = 0 to A.length
 return true
 
 VERIFICA-CICLO(A)
+>color è un array di A.length
+for i = 0 to A.length
+	color[i] = 0
+for i = 0 to A.length
+	if color[i] == 0
+		numCicli = controllaCiclo(A,i,color)
+return numCicli == 1
 
+controllaCiclo(A,n,color)
+x = A[n]
+if ritornaA(A,A[x.key], n,color)
+	color[n] = 1
+	return 1
+return 0
 
+ritornaA(A,x,n,color)  >x è un nodo
+if x == NULL return false
+while x != NULL
+	if (x.key == n)
+		return true
+	else if ritornaA(A,A[x.key],n) == true
+		color[x.key] = 1  >coloro i punti che fanno parte del ciclo
+		return true
+	x = x.next
+return false
 
 COMPLESSITà:
 1- essendo composto da una istruzione, theta di 1
