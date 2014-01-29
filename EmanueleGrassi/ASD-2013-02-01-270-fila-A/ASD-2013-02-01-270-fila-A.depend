@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1391017330 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-02-01-270-fila-a\espressione.c
+	"Espressione.h"
+	<stdio.h>
+
+1391017420 c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-02-01-270-fila-a\espressione.h
+
+1353751060 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-02-01-270-fila-a\main.c
+	<stdio.h>
+	<stdlib.h>
+
