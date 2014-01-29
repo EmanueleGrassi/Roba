@@ -1,0 +1,27 @@
+CONTA-COMPONENTI-CONNESSE(A)
+
+>color è un array di dimensioni A.length
+for i = 0 to A.length
+	color[i] = 0
+>cont è un intero
+cont = 0
+for j = 0 to A.length
+	if color[j] == 0
+		cont += CONTA_RIC(A,j,color)
+return cont
+
+
+CONTA_RIC(A, u, color)
+
+x = A[u]
+color[u] = 1
+
+while x != NULL
+	v = x.key
+	if color[v] == 0
+		CONTA_RIC(A,v,color)
+	x = x.next
+color[u] = 2
+return 1
+
+complessità: la complessità del metodo CONTA_RIC è theta di m+n. infatti ogni nodo viene esaminato una sola volta, quindi avremo al massimo n visite, ed ogni arco è esaminato sia dal nodo di partenza che dal nodo di ritorno. nel caso in cui ho n nodi ed n componenti connesse(il caso in cui nessun nodo ha archi uscenti o entranti) allora il metodo contaric ha costo appartente a theta di 1, ma comunque tutto l'algoritmo avrebbe un costo di theta di n a causa dei 2 cicli for presenti nel metodo contacomponenti connesse. questi cicli impongono all'algoritmo un costo di omega di n. un'altro caso particolare è quello in cui sono presenti m = n^2 archi. in tal caso contaric verrebbe lanciato una sola volta da contacomponenticonnesse, ma avrebbe un costo di n^2. a questo va aggiunto però che contaric viene chiamato da un ciclo for e quindi l'algoritmo ha costo appartente a theta di n^3 (?)

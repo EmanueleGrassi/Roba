@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1353751060 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-02-01-intermedia-270\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1391017330 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-02-01-intermedia-270\espressione.c
+	"Espressione.h"
+	<stdio.h>
+
+1391017420 c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-02-01-intermedia-270\espressione.h
+
+1391018694 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-02-01-intermedia-270\exprtree.c
+	"ExprTree.h"
+	<stdio.h>
+
+1391017641 c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-02-01-intermedia-270\exprtree.h
+	"Espressione.h"
+
