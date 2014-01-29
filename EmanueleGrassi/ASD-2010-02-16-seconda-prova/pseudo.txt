@@ -1,0 +1,40 @@
+VERIFICA-ARCO-USCENTE(A,u)
+
+return A[u].next == NULL
+
+VERIFICA-ARCO-ENTRANTE(A,u)
+>cont è un intero
+cont = 0
+for i = 0 to A.length
+	x = A[i]
+	while x != NULL
+		if x.info == u
+			cont++
+		if cont > 1
+			return false
+		x = x.next
+return cont == 1
+
+VERIFICA(A)
+for i = 0 to A.length
+	if not VERIFICA-ARCO-USCENTE(A,i)
+		return false
+>controllo è un array di interi di dimensioni A.length
+for j = 0 to A.length
+	controllo[j] = 0
+for k = 0 to A.length
+	controllo[A[k].key] = 1
+for l = 0 to A.length
+	if controllo[l] != 1
+		return false
+return true
+
+VERIFICA-CICLO(A)
+
+
+
+COMPLESSITà:
+1- essendo composto da una istruzione, theta di 1
+2- è presente un ciclo while annidato in un ciclo for, nel caso peggiore il ciclo while itera per n volte, con n = A.length, quindi la complessità è theta di n^2
+3- è composto da 4 cicli for di complessità lineare, quindi l'algoritmo appartiene a theta di n
+4-

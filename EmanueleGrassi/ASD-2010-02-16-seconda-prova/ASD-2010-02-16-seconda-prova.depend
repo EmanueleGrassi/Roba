@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1391003934 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2010-02-16-seconda-prova\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1391004205 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2010-02-16-seconda-prova\punto.c
+	"Punto.h"
+	<math.h>
+
+1391001230 c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2010-02-16-seconda-prova\punto.h
+
