@@ -1,5 +1,5 @@
 VERIFICA-ARCO-USCENTE(A,u)
-
+if A[u] == NULL return false
 return A[u].next == NULL
 
 VERIFICA-ARCO-ENTRANTE(A,u)
