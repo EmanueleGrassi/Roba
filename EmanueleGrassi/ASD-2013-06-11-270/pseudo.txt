@@ -1,0 +1,43 @@
+CAMMINOPIUCORTO(T)
+
+return ricorsivo(T.root)
+
+ricorsivo(x)
+
+if x == NULL return -1
+else
+	l = ricorsivo(x.left)
+	r = ricorsivo(x.right)
+	if l>r return r+1
+	else return l+1
+
+
+NODI_LONTANI(A,u,d)
+>color e distanza sono 2 array di interi di dimensione A.length
+for i = 0 to A.length
+	color[i] = 0
+	distanza[i] = 0
+for j = 0 to A.length
+	for l = 0 to A.length
+		color[i] = 0
+	DISTANZA(A,j,u,color,distanza,j)
+
+for k = 1 to A.length
+return min
+
+
+DISTANZA(A,j,u,color,distanza,i)
+if j==u return
+x = A[j]
+color[j] = 1
+while x != NULL
+	v = x.info
+	if v==u
+		distanza[i]++
+		return
+	if color[v] == 0
+		distanza[i]++
+		DISTANZA(A,v,u,color,distanza,i)
+	x = x.next
+color[j] = 2
+

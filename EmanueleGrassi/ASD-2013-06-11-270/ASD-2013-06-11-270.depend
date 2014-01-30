@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1391087350 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-06-11-270\main.c
+	<stdio.h>
+	<stdlib.h>
+	"numTree.h"
+
+1391085441 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-06-11-270\numtree.c
+	<stdio.h>
+	<math.h>
+	"numTree.h"
+
+1391084499 c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-06-11-270\numtree.h
+
