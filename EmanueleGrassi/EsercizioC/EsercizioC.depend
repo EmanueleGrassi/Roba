@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1391093504 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\esercizioc\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+	"tree.h"
+
+1391093557 c:\users\emanuele\documents\github\clubasd\emanuelegrassi\esercizioc\list.h
+	"tree.h"
+
+1391093557 c:\users\emanuele\documents\github\clubasd\emanuelegrassi\esercizioc\tree.h
+
+1391093720 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\esercizioc\list.c
+	"list.h"
+	<stdio.h>
+
+1391093557 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\esercizioc\list.h
+	"tree.h"
+
+1391093731 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\esercizioc\tree.c
+	<stdio.h>
+	"tree.h"
+
+1391093557 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\esercizioc\tree.h
+
