@@ -4,10 +4,18 @@
 	<stdlib.h>
 	"numTree.h"
 
-1391085441 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-06-11-270\numtree.c
+1391088684 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-06-11-270\numtree.c
 	<stdio.h>
 	<math.h>
 	"numTree.h"
 
 1391084499 c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-06-11-270\numtree.h
+
+1391088274 source:c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-06-11-270\lista.c
+	"lista.h"
+	<stdio.h>
+	"numTree.h"
+
+1391084290 c:\users\emanuele\documents\github\clubasd\emanuelegrassi\asd-2013-06-11-270\lista.h
+	"numTree.h"
 

@@ -16,6 +16,7 @@ int** creaMatrice(tree* t)
         for(j = 0; j<f; j++)
             M[i][j] = 0;
     riempiMatrice(M, t,0,0);
+    return M;
 }
 
 void riempiMatrice(int **M, tree *t, int riga, int colonna)
@@ -44,4 +45,21 @@ int altezza(tree* t)
 int foglie(tree* t)
 {
     return pow(2,altezza(t));
+}
+
+void createTextFile(tree* t)
+{
+    FILE *pf;
+    fopen("colonne.txt", "w");
+    int ** M = creaMatrice(t);
+    int h = altezza(t);
+    int f = foglie(t);
+    int i,j;
+    i = j = 0;
+    for (i = 0; i<f; i++){
+        for (j = 0; j<h; j++)
+            fprintf(pf,"%d ", M[j][i]);
+        fprintf(pf, "\n");
+    }
+    fclose(pf);
 }
