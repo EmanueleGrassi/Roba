@@ -2,15 +2,12 @@ package testesame2010;
 
 import static org.junit.Assert.*;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import esame2010.Autore;
-import esame2010.Biblioteca;
-import esame2010.Libro;
+import esame2010.*;
 
 public class BibliotecaTest 
 {
@@ -19,23 +16,50 @@ public class BibliotecaTest
 	@Before
 	public void setUp() throws Exception 
 	{
-		bib =new Biblioteca();
-				
+		bib = new Biblioteca();				
+	}
+	@Test
+	public void selezionaUnolibroNull() 
+	{
+		bib.addLibro("3251", new Libro("republica", new Autore("Platone", 200)));
+		bib.addLibro("4676",  null);
+		bib.addLibro("3678",  new Libro("Faust", new Autore("Goethe", 1749 )));
+		List<Autore> contronto = new ArrayList<>();
+		//in ordine alfabetico!
+		contronto.add( new Autore("Goethe", 1749 ));
+		contronto.add(new Autore("Platone", 200));
+		assertEquals(contronto ,bib.seleziona(new SelezionatoreAutoriProlifici()));
+	}
+	
+//TEST PER AUTORE2LIBRO	
+	@Test
+	public void testAutore2libriNull() 
+	{
+		bib.addLibro("4568", null);
+		assertEquals(new HashMap<Autore, Set<Libro>>() ,bib.autore2libri());
+	}
+	@Test
+	public void testAutore2libriAutoreNull() 
+	{
+		bib.addLibro("4568",  new Libro("Le nuvole", null));
+		assertEquals(new HashMap<Autore, Set<Libro>>() ,bib.autore2libri());
 	}
 	@Test
 	public void testAutore2libriVuoti() 
 	{
-		Map<Autore, Set<Libro>> res = bib.autore2libri();
-		res.toString();
+		assertEquals(new HashMap<Autore, Set<Libro>>() ,bib.autore2libri());
 	}
 	@Test
 	public void testAutore2libriUno() 
 	{
 		bib.addLibro("4568",  new Libro("Le nuvole", new Autore("Aristofane", 300)));
-		Map<Autore, Set<Libro>> res = bib.autore2libri();
-		res.toString();
+		Map<Autore, Set<Libro>> confronto = new HashMap<Autore, Set<Libro>>() ;
+		Set<Libro> t = new HashSet<Libro>();
+		t.add(new Libro("Le nuvole", new Autore("Aristofane", 300)));
+		confronto.put(new Autore("Aristofane", 300), t);
+			
+		assertEquals(confronto ,bib.autore2libri());
 	}
-
 	@Test
 	public void testAutore2libriMolteplici() 
 	{

@@ -1,6 +1,6 @@
 package esame2010;
 
-public class Autore 
+public class Autore implements Comparable<Autore>
 {
 	private int annoNascita;
 	private String nome;
@@ -47,5 +47,10 @@ public class Autore
 		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Autore o) {
+		return this.nome.compareTo(o.getNome());
 	}
 }

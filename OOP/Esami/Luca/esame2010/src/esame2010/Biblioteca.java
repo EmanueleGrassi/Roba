@@ -19,7 +19,7 @@ public class Biblioteca {
 	}
 
 	public List<Autore> seleziona(Selezionatore selezionatore) {
-		return selezionatore.eseguiSelezione((List<Libro>) codice2libro.values());
+		return selezionatore.eseguiSelezione((List<Libro>) new ArrayList<Libro>(codice2libro.values()));
 	}
 
 	public Map<Autore, Set<Libro>> autore2libri() 
@@ -27,19 +27,25 @@ public class Biblioteca {
 		Map<Autore, Set<Libro>> autore2libri = new HashMap<>();
 		for(Libro libro : codice2libro.values())
 		{
-			Set<Autore> temp =  libro.getAutori();
-			for(Autore autor : temp)
+			if(libro!=null)
 			{
-				if(autore2libri.containsKey(autor))
+				Set<Autore> temp =  libro.getAutori();
+				for(Autore autor : temp)
 				{
-					Set<Libro> autorelibro= autore2libri.get(autor);
-					autorelibro.add(libro);
-				}
-				else
-				{
-					Set<Libro> autorelibro = new HashSet<>();
-					autorelibro.add(libro);
-					autore2libri.put(autor, autorelibro);
+					if(autor!=null)
+					{
+						if(autore2libri.containsKey(autor))
+						{
+							Set<Libro> autorelibro= autore2libri.get(autor);
+							autorelibro.add(libro);
+						}
+						else
+						{
+							Set<Libro> autorelibro = new HashSet<>();
+							autorelibro.add(libro);
+							autore2libri.put(autor, autorelibro);
+						}
+					}
 				}
 			}
 			
