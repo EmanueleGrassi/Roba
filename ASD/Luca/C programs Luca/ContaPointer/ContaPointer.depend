@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1384872051 source:c:\users\luca\documents\università\c programs\contapointer\main.c
+	<stdio.h>
+	<stdlib.h>
+
