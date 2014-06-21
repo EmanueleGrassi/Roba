@@ -1,0 +1,59 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import esame.Documento;
+import esame.PermessoAccesso;
+import esame.Utente;
+import esame.Utility;
+
+public class UtilityTest {
+	List<Documento> docs, docsPaoloPrivate;
+	Map<Utente, List<Documento>> test;
+	PermessoAccesso permessoPublic = new PermessoAccesso("public");
+	PermessoAccesso permessoPrivate = new PermessoAccesso("private");
+
+
+	@Before
+	public void setUp() throws Exception {
+		docs = new ArrayList<Documento>();
+		Utente marco = new Utente("Marco");
+		Utente giovanni = new Utente("giovanni");
+		Utente paolo = new Utente("paolo");
+		
+		permessoPublic.addUtente(marco);
+		permessoPublic.addUtente(paolo);
+		
+		permessoPrivate.addUtente(giovanni);
+		permessoPrivate.addUtente(paolo);
+
+		
+		docs.add(new Documento("helloWorld", 5, "13/06/2014", permessoPublic));
+		docs.add( new Documento("test", 5, "24/05/2014", permessoPublic));
+		docs.add( new Documento("libro", 5, "11/05/2014", permessoPublic));
+		Documento d1p =  new Documento("esame", 5, "8/06/2014", permessoPrivate);
+		Documento d2p =  new Documento("cose", 5, "6/05/2014", permessoPrivate);
+		Documento d3p = new Documento("vacanza", 5, "5/06/2014", permessoPrivate);
+		docs.add(d1p);
+		docs.add(d2p);
+		docs.add(d3p);
+		
+		docsPaoloPrivate = new ArrayList<Documento>();
+		docsPaoloPrivate.add(d1p);
+		docsPaoloPrivate.add(d2p);
+		docsPaoloPrivate.add(d3p);
+		test = new HashMap<>();
+		test.put(paolo, docsPaoloPrivate);
+	}
+
+	@Test
+	public void testutente2docsutente2docsTest() {
+		assertEquals(test, Utility.utente2docs(docs, "private"));
+	}
+
+}

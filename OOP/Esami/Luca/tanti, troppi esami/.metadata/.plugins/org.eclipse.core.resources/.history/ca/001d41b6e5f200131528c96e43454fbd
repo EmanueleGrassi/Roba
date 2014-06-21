@@ -1,0 +1,18 @@
+package esame;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
+public class Archivio {
+	private String nome;
+	private String dataCreazione;
+	private Map<String, PermessoAccesso> permessi;
+	public Archivio(String nome, String dataCreazione, PermessoAccesso permessoAccesso) {
+		this.nome = nome;
+		this.dataCreazione = dataCreazione;
+		this.permessi = new HashMap<String, PermessoAccesso>();
+		this.permessi.put(permessoAccesso.getNome(), permessoAccesso);
+	}
+
+}

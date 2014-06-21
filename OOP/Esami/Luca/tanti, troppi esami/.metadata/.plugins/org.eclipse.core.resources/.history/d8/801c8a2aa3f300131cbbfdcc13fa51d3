@@ -1,0 +1,58 @@
+package testesame2010;
+
+import static org.junit.Assert.*;
+
+import java.util.Map;
+import java.util.Set;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import esame2010.Autore;
+import esame2010.Biblioteca;
+import esame2010.Libro;
+
+public class BibliotecaTest 
+{
+
+	Biblioteca bib;
+	@Before
+	public void setUp() throws Exception 
+	{
+		bib = new Biblioteca();
+				
+	}
+	@Test
+	public void testAutore2libriNull() 
+	{
+		bib.addLibro("4568", null);
+		Map<Autore, Set<Libro>> res = bib.autore2libri();
+		res.toString();
+	}
+	@Test
+	public void testAutore2libriVuoti() 
+	{
+		Map<Autore, Set<Libro>> res = bib.autore2libri();
+		res.toString();
+	}
+	@Test
+	public void testAutore2libriUno() 
+	{
+		bib.addLibro("4568",  new Libro("Le nuvole", new Autore("Aristofane", 300)));
+		Map<Autore, Set<Libro>> res = bib.autore2libri();
+		res.toString();
+	}
+
+	@Test
+	public void testAutore2libriMolteplici() 
+	{
+		bib.addLibro("3251", new Libro("republica", new Autore("Platone", 200)));
+		bib.addLibro("4676",  new Libro("Promessi Sposi", new Autore("Manzoni", 1785 )));
+		bib.addLibro("3678",  new Libro("Faust", new Autore("Goethe", 1749 )));
+		bib.addLibro("8797", new Libro("Dorian gray", new Autore("Oscar Wilde", 1854 )));
+		bib.addLibro("4568",  new Libro("Le nuvole", new Autore("Aristofane", 300)));
+		Map<Autore, Set<Libro>> res = bib.autore2libri();
+		res.toString();
+	}
+
+}

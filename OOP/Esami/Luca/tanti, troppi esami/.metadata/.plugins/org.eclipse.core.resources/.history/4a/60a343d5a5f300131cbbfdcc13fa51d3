@@ -1,0 +1,77 @@
+package testesame2010;
+
+import static org.junit.Assert.*;
+
+import java.util.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import esame2010.*;
+
+public class BibliotecaTest 
+{
+
+	Biblioteca bib;
+	@Before
+	public void setUp() throws Exception 
+	{
+		bib = new Biblioteca();
+				
+	}
+	public void selezionaUnolibroNull() 
+	{
+		bib.addLibro("3251", new Libro("republica", new Autore("Platone", 200)));
+		bib.addLibro("4676",  null);
+		bib.addLibro("3678",  new Libro("Faust", new Autore("Goethe", 1749 )));
+		List<Libro> contronto = new ArrayList<>();
+		contronto.add(new Libro("republica", new Autore("Platone", 200)));
+		contronto.add(new Libro("Faust", new Autore("Goethe", 1749 )));
+		assertEquals(contronto ,bib.seleziona(new SelezionatoreAutoriProlifici()));
+	}
+	
+	
+	
+	
+//TEST PER AUTORE2LIBRO	
+	@Test
+	public void testAutore2libriNull() 
+	{
+		bib.addLibro("4568", null);
+		assertEquals(new HashMap<Autore, Set<Libro>>() ,bib.autore2libri());
+	}
+	@Test
+	public void testAutore2libriAutoreNull() 
+	{
+		bib.addLibro("4568",  new Libro("Le nuvole", null));
+		assertEquals(new HashMap<Autore, Set<Libro>>() ,bib.autore2libri());
+	}
+	@Test
+	public void testAutore2libriVuoti() 
+	{
+		assertEquals(new HashMap<Autore, Set<Libro>>() ,bib.autore2libri());
+	}
+	@Test
+	public void testAutore2libriUno() 
+	{
+		bib.addLibro("4568",  new Libro("Le nuvole", new Autore("Aristofane", 300)));
+		Map<Autore, Set<Libro>> confronto = new HashMap<Autore, Set<Libro>>() ;
+		Set<Libro> t = new HashSet<Libro>();
+		t.add(new Libro("Le nuvole", new Autore("Aristofane", 300)));
+		confronto.put(new Autore("Aristofane", 300), t);
+			
+		assertEquals(confronto ,bib.autore2libri());
+	}
+	@Test
+	public void testAutore2libriMolteplici() 
+	{
+		bib.addLibro("3251", new Libro("republica", new Autore("Platone", 200)));
+		bib.addLibro("4676",  new Libro("Promessi Sposi", new Autore("Manzoni", 1785 )));
+		bib.addLibro("3678",  new Libro("Faust", new Autore("Goethe", 1749 )));
+		bib.addLibro("8797", new Libro("Dorian gray", new Autore("Oscar Wilde", 1854 )));
+		bib.addLibro("4568",  new Libro("Le nuvole", new Autore("Aristofane", 300)));
+		Map<Autore, Set<Libro>> res = bib.autore2libri();
+		res.toString();
+	}
+
+}

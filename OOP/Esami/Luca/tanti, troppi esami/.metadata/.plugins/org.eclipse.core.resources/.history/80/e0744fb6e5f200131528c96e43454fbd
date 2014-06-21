@@ -1,0 +1,44 @@
+package esame;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+public class Cartella extends Archivio {
+	
+	private Set<Archivio> documenti;
+		
+	public Cartella(String nome, String dataCreazione, PermessoAccesso permessoAccesso) {
+		super(nome,dataCreazione, permessoAccesso);
+		this.documenti = new HashSet<Archivio>();
+	}
+
+	public String getDataCreazione() {
+		return this.dataCreazione;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public int getDimensione() {
+		int dimensioni = 0;
+		// codice omesso: completare
+		return dimensioni;
+	}
+
+	public PermessoAccesso getPermessoAccesso(String nomePermesso) {
+		return this.permessi.get(nomePermesso);
+	}
+	
+	public boolean addDocumento(Documento documento) {
+		return this.documenti.add(documento);
+	}
+			
+	/*	
+	public List<Archivio> archiviCreatiIl(String data) {
+		// codice omesso: domanda 5. 
+	}
+	*/
+}

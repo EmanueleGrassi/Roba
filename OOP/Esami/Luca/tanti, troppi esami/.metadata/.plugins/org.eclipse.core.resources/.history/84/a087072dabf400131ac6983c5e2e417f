@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Impresa implements Comparable<Impresa> {
+	private int annoDiCostituzione;
+	private String nazione;
+	private String nome;
+	private Set<Dipendente> dipendenti;
+
+	public Impresa(int annoDiCostituzione, String nazione, String nome) {
+		this.annoDiCostituzione = annoDiCostituzione;
+		this.nazione = nazione;
+		this.nome = nome;
+		this.dipendenti = new HashSet<Dipendente>();
+	}
+
+	public int getAnnoDiCostituzione() {
+		return this.annoDiCostituzione;
+	}
+
+	public String getNazione() {
+		return this.nazione;
+	}
+
+	public void aggiungiDipendente(Dipendente dipendente) {
+		this.dipendenti.add(dipendente);
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public int compareTo(Impresa that) {
+		return this.getNome().compareTo(that.getNome());
+	}
+
+	public int getNumeroDipendenti() {
+		// scrivere il codice di questo metodo (vedi DOMANDA 2)
+	}
+}

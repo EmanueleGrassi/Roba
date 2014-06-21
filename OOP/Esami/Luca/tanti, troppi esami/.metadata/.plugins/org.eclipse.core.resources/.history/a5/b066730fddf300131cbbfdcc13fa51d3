@@ -1,0 +1,90 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Risorsa {
+	private Utente proprietario;
+	private String nome;
+	private List<Utente> possonoLeggere;
+	private List<Utente> possonoModificare;
+
+	public Risorsa(String nome, Utente proprietario) {
+		this.nome = nome;
+		this.proprietario = proprietario;
+		this.possonoLeggere = new ArrayList<Utente>();
+		this.possonoModificare = new ArrayList<Utente>();
+	}
+
+	public Utente getProprietario() {
+		return this.proprietario;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public abstract int getDimensioni();
+
+	public boolean puoLeggere(Utente utente) {
+		return this.possonoLeggere.contains(utente);
+	}
+
+	public boolean puoModificare(Utente utente) {
+		return this.possonoModificare.contains(utente);
+	}
+
+	public void abilitaLettura(Utente utente) {
+		this.possonoLeggere.add(utente);
+	}
+
+	public void abilitaModifica(Utente utente) {
+		this.possonoModificare.add(utente);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result
+				+ ((possonoLeggere == null) ? 0 : possonoLeggere.hashCode());
+		result = prime
+				* result
+				+ ((possonoModificare == null) ? 0 : possonoModificare
+						.hashCode());
+		result = prime * result
+				+ ((proprietario == null) ? 0 : proprietario.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Risorsa other = (Risorsa) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (possonoLeggere == null) {
+			if (other.possonoLeggere != null)
+				return false;
+		} else if (!possonoLeggere.equals(other.possonoLeggere))
+			return false;
+		if (possonoModificare == null) {
+			if (other.possonoModificare != null)
+				return false;
+		} else if (!possonoModificare.equals(other.possonoModificare))
+			return false;
+		if (proprietario == null) {
+			if (other.proprietario != null)
+				return false;
+		} else if (!proprietario.equals(other.proprietario))
+			return false;
+		return true;
+	}
+}

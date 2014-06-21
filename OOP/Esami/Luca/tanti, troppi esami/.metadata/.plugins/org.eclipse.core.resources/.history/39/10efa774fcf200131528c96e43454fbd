@@ -1,0 +1,39 @@
+package esame2010;
+
+import java.util.*;
+
+public class SelezionatoreAutoriProlifici implements Selezionatore {
+	public List<Autore> eseguiSelezione(List<Libro> libriInBiblioteca) {
+		Map<Autore, Set<Libro>> autore2libri = new HashMap<>();
+		for (Libro libro : libriInBiblioteca) {
+			Set<Autore> temp = libro.getAutori();
+			for (Autore autor : temp) {
+				if (autore2libri.containsKey(autor)) {
+					Set<Libro> autorelibro = autore2libri.get(autor);
+					autorelibro.add(libro);
+				} else {
+					Set<Libro> autorelibro = new HashSet<>();
+					autorelibro.add(libro);
+					autore2libri.put(autor, autorelibro);
+				}
+			}
+		}
+		int maxLibri = 0;
+		for (Set<Libro> item : autore2libri.values()) {
+			if (item.size() > maxLibri)
+				maxLibri = item.size();
+		}
+		List<Autore> res = new ArrayList<Autore>();
+		for (Autore item : autore2libri.keySet()) {
+			if (autore2libri.get(item).size() == maxLibri)
+				res.add(item);
+		}
+		Collections.sort(res, new Comparator<Autore>() {
+			@Override
+			public int compare(Autore o1, Autore o2) {
+				return o1.getNome().compareTo(o2.getNome());
+			}
+		});
+		return res;
+	}
+}

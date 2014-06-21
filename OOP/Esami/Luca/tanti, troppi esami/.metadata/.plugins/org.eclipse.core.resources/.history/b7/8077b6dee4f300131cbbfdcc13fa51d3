@@ -1,0 +1,24 @@
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+
+public class DirectoryTest {
+Directory dir;
+	@Before
+	public void setUp() throws Exception {
+		dir = new Directory("casa", new Utente("Luca"));
+	}
+
+	@Test
+	public void testConcediPermesso() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testPermessiDi() {
+		fail("Not yet implemented");
+	}
+
+}

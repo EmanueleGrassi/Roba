@@ -1,0 +1,16 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class Società {
+	private int annoDiCostituzione;
+	private String nazione;
+	private String nome;
+	private Set<Dipendente> dipendenti;
+
+	public Società(int annoDiCostituzione, String nazione, String nome) {
+		this.annoDiCostituzione = annoDiCostituzione;
+		this.nazione = nazione;
+		this.nome = nome;
+		this.dipendenti = new HashSet<Dipendente>();
+	}
+}

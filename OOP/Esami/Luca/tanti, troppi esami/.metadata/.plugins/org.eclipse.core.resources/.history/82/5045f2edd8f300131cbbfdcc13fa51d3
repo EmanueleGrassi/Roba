@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+
+public class Risorsa {
+	private Utente proprietario;
+	private String nome;
+	private List<Utente> possonoLeggere;
+	private List<Utente> possonoModificare;
+	public Risorsa(String nome, Utente proprietario) {
+		this.nome = nome;
+		this.proprietario = proprietario;
+		this.possonoLeggere = new ArrayList<Utente>();
+		this.possonoModificare = new ArrayList<Utente>();
+	}
+	public Utente getProprietario() {
+		return this.proprietario;
+	}
+	public String getNome() {
+		return this.nome;
+	}
+	public abstract int getDimensioni();
+}

@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class Directory extends Risorsa{
+	
+	private Set<File> files;
+
+	public Directory(String nome, Utente proprietario) {
+		super(nome, proprietario);
+		this.files = new HashSet<File>();
+	}
+@Override
+	public int getDimensioni() {
+		int dimensioni = 0;
+		for (File file : this.files)
+			dimensioni += file.getDimensioni();
+		return dimensioni;
+	}
+}

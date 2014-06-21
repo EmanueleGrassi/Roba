@@ -1,0 +1,28 @@
+import static org.junit.Assert.*;
+
+import java.util.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class Societ‡Test {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void test() {
+		List<Societ‡> elencoSociet‡ = new ArrayList<Societ‡>();
+		Societ‡ s0 = new Impresa (2000, "ITA", "qui");
+		Societ‡ s1 = new Consorzio(2001, "FRA", "paperopoli");
+		elencoSociet‡.add(s0);
+		elencoSociet‡.add(s1);
+		elencoSociet‡.add(new Consorzio(2002, "USA", "topolonia"));
+		s0 = s1;
+		s1 = new Impresa(1903, "SPA", "paperone");
+		elencoSociet‡.add(s0);
+		elencoSociet‡.add(s1); 
+		System.out.println(elencoSociet‡.toString());
+	}
+}

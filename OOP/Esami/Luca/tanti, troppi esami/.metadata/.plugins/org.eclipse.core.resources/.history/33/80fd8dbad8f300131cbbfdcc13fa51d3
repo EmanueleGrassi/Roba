@@ -1,0 +1,46 @@
+import java.util.*;
+public class File {
+	private int dimensioni;
+	private Utente proprietario;
+	private String nome;
+	private List<Utente> possonoLeggere;
+	private List<Utente> possonoModificare;
+	public File(String nome, int dimensioni, Utente proprietario) {
+		this.nome = nome;
+		this.dimensioni = dimensioni;
+		this.proprietario = proprietario;
+		this.possonoLeggere = new ArrayList<Utente>();
+		this.possonoModificare = new ArrayList<Utente>();
+	}
+	public Utente getProprietario() {
+		return this.proprietario;
+	}
+	public String getNome() {
+		return this.nome;
+	}
+	public int getDimensioni() {
+		return this.dimensioni;
+	}
+	public void setDimensioni(int dimensioni) {
+		this.dimensioni = dimensioni;
+	}
+	public boolean puoLeggere(Utente utente){
+		return this.possonoLeggere.contains(utente);
+	}
+	public boolean puoModificare(Utente utente){
+		return this.possonoModificare.contains(utente);
+	}
+	public void abilitaLettura(Utente utente) {
+		this.possonoLeggere.add(utente);
+	}
+	public void abilitaModifica(Utente utente) {
+		this.possonoModificare.add(utente);
+	}
+	public int hashcode(){
+		return this.nome.hashCode();
+	}
+	public boolean equals(Object that) {
+		File f = (File) that;
+		return this.nome.equals(f.getNome()); 
+	}
+}

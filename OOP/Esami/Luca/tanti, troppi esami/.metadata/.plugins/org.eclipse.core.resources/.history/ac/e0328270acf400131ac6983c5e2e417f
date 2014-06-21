@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Consorzio extends Società {
+
+	private Map<String, Società> imprese;
+
+	public Consorzio(int annoCostituzione, String nazione, String nome) {
+		super(annoCostituzione, nazione, nome);
+		this.imprese = new HashMap<String, Impresa>();
+	}
+
+	public void aggiungiConsorziata(Società nuovaConsorziata) {
+		/* scrivere il codice di questo metodo (vedi DOMANDA 1) */
+		imprese.put(nuovaConsorziata.getNome(), nuovaConsorziata)
+	}
+	
+	@Override
+	public int getNumeroDipendenti() {
+		// scrivere il codice di questo metodo (vedi DOMANDA 2)
+		int numeroDipendentiConsorziate=0;
+		for(Società consorziata : imprese.values())
+			numeroDipendentiConsorziate+= consorziata.getNumeroDipendenti();
+		return super.getNumeroDipendenti() + numeroDipendentiConsorziate;
+	}
+}

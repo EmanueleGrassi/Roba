@@ -1,0 +1,34 @@
+package it.uniroma3.diadia.ambienti;
+
+import static org.junit.Assert.*;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class StanzaMagicaTest {
+
+	StanzaMagica stanzaMagicaSoglia1;
+	Attrezzo martello, cacciavite;
+	
+	@Before
+	public void setUp() throws Exception {
+		stanzaMagicaSoglia1 = new StanzaMagica("N1", 1);
+		
+		martello = new Attrezzo("martello",3);
+		cacciavite = new Attrezzo("cacciavite",2);
+	}
+	@Test
+	public void testGetAttrezzo(){
+		assertEquals(martello, stanzaMagicaSoglia1.getAttrezzo("martello").getNome());
+	}
+	@Test
+	public void testAddAttrezzo() {
+		stanzaMagicaSoglia1.addAttrezzo(martello);
+		assertEquals("la soglia non è superata ancora"
+				,stanzaMagicaSoglia1.getAttrezzo("martello").getNome(), "martello");
+		stanzaMagicaSoglia1.addAttrezzo(cacciavite);
+		assertEquals("la soglia è superata e il nome dell'attrezzo è cambiato"
+				,stanzaMagicaSoglia1.getAttrezzo("etivaiccac").getNome(), "etivaiccac");
+	}
+}

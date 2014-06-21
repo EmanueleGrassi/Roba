@@ -1,0 +1,114 @@
+import java.util.*;
+import java.util.Map.Entry;
+
+public abstract class Risorsa {
+	private Utente proprietario;
+	private String nome;
+	private List<Utente> possonoLeggere;
+	private List<Utente> possonoModificare;
+	private Map<Permesso, Set<Utente>> permessi;
+
+	public Risorsa(String nome, Utente proprietario) {
+		this.nome = nome;
+		this.proprietario = proprietario;
+
+		this.possonoLeggere = new ArrayList<Utente>();
+		this.possonoModificare = new ArrayList<Utente>();
+		permessi = new HashMap<>();
+	}
+
+	public Utente getProprietario() {
+		return this.proprietario;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public abstract int getDimensioni();
+
+	boolean haIlPermesso(Permesso permesso, Utente utente) {
+		Set<Utente> u = permessi.get(permesso);
+		return u.contains(utente);
+	}
+
+	void concediPermesso(Permesso permesso, Utente utente) {
+		if(permesso !=null && utente != null) {
+			Set<Utente> temp;
+			if (this.permessi.containsKey(permesso)) {
+				temp = this.permessi.get(permesso);
+				temp.add(utente);
+			} else {
+				temp = new HashSet<Utente>();
+				temp.add(utente);
+				this.permessi.put(permesso, temp);
+			}
+		}
+	}
+
+	List<Permesso> permessiDi(Utente utente) {
+		List<Permesso> permessiDi = new LinkedList<>();
+		for (Entry<Permesso, Set<Utente>> item : permessi.entrySet()) {
+			if (item.getValue().contains(utente)) {
+				permessiDi.add(item.getKey());
+				continue;
+			}
+		}
+		Collections.sort(permessiDi, new Comparator<Permesso>() {
+
+			@Override
+			public int compare(Permesso o1, Permesso o2) {
+				return o1.getNome().compareTo(o2.getNome());
+			}
+		});
+		return permessiDi;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result
+				+ ((possonoLeggere == null) ? 0 : possonoLeggere.hashCode());
+		result = prime
+				* result
+				+ ((possonoModificare == null) ? 0 : possonoModificare
+						.hashCode());
+		result = prime * result
+				+ ((proprietario == null) ? 0 : proprietario.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Risorsa other = (Risorsa) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (possonoLeggere == null) {
+			if (other.possonoLeggere != null)
+				return false;
+		} else if (!possonoLeggere.equals(other.possonoLeggere))
+			return false;
+		if (possonoModificare == null) {
+			if (other.possonoModificare != null)
+				return false;
+		} else if (!possonoModificare.equals(other.possonoModificare))
+			return false;
+		if (proprietario == null) {
+			if (other.proprietario != null)
+				return false;
+		} else if (!proprietario.equals(other.proprietario))
+			return false;
+		return true;
+	}
+}

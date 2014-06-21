@@ -1,0 +1,35 @@
+package it.uniroma3.diadia;
+
+import static org.junit.Assert.*;
+import java.io.StringReader;
+import org.junit.Before;
+import org.junit.Test;
+
+public class CaricatoreLabirintoTest {
+
+	private StringReader monolocale;
+	private CaricatoreLabirinto caricatoreMonolocale;
+	
+	@Before
+	public void setUp() throws Exception {
+		this.monolocale = new StringReader("Stanze: biblioteca\nInizio: biblioteca\nVincente: biblioteca\nAttrezzi: libro 1 biblioteca\nUscite: ");
+		this.caricatoreMonolocale = new CaricatoreLabirinto("lab.txt");
+		this.caricatoreMonolocale.carica();
+	}
+
+	@Test
+	public void testCarica() {
+		assertEquals("N10", this.caricatoreMonolocale.getStanzaIniziale().getStanzaAdiacente("est").getNome());
+	}
+
+	@Test
+	public void testGetStanzaIniziale() {
+		assertEquals("Atrio", this.caricatoreMonolocale.getStanzaIniziale().getNome());
+	}
+
+	@Test
+	public void testGetStanzaVincente() {
+		assertEquals("Atrio", this.caricatoreMonolocale.getStanzaVincente().getNome());
+	}
+
+}

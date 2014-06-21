@@ -1,0 +1,52 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import esame.Documento;
+import esame.PermessoAccesso;
+import esame.Utente;
+import esame.Utility;
+
+public class UtilityTest {
+	List<Documento> docs;
+	Map<Utente, List<Documento>> test;
+	PermessoAccesso permessoPublic = new PermessoAccesso("public");
+	PermessoAccesso permessoPrivate = new PermessoAccesso("private");
+
+
+	@Before
+	public void setUp() throws Exception {
+		docs = new ArrayList<Documento>();
+		Utente marco = new Utente("Marco");
+		Utente giovanni = new Utente("giovanni");
+		Utente paolo = new Utente("paolo");
+		
+		permessoPublic.addUtente(marco);
+		permessoPublic.addUtente(paolo);
+		
+		permessoPrivate.addUtente(giovanni);
+		permessoPrivate.addUtente(paolo);
+
+		
+		docs.add(new Documento("helloWorld", 5, "13/06/2014", permessoPublic));
+		docs.add( new Documento("test", 5, "24/05/2014", permessoPublic));
+		docs.add( new Documento("esame", 5, "8/06/2014", permessoPrivate));
+		docs.add( new Documento("cose", 5, "6/05/2014", permessoPrivate));
+		docs.add( new Documento("libro", 5, "11/05/2014", permessoPublic));
+		docs.add( new Documento("vacanza", 5, "5/06/2014", permessoPrivate));
+		
+		test = new HashMap<>();
+		test.put(paolo, docs);
+	}
+
+	@Test
+	public void testutente2docsutente2docsTest(List<Documento> docs, String nomePermesso) {
+		assertEquals(test, Utility.utente2docs(docs, nomePermesso) );
+	}
+
+}

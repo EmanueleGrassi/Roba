@@ -1,0 +1,43 @@
+import java.util.*;
+import java.util.Map.Entry;
+
+public class Consorzio extends Società {
+
+	private Map<String, Società> imprese;
+
+	public Consorzio(int annoCostituzione, String nazione, String nome) {
+		super(annoCostituzione, nazione, nome);
+		this.imprese = new HashMap<String, Società>();
+	}
+
+	public void aggiungiConsorziata(Società nuovaConsorziata) {
+		/* scrivere il codice di questo metodo (vedi DOMANDA 1) */
+		imprese.put(nuovaConsorziata.getNome(), nuovaConsorziata);
+	}
+
+	@Override
+	public int getNumeroDipendenti() {
+		// scrivere il codice di questo metodo (vedi DOMANDA 2)
+		int numeroDipendentiConsorziate = 0;
+		for (Società consorziata : imprese.values())
+			numeroDipendentiConsorziate += consorziata.getNumeroDipendenti();
+		return super.getNumeroDipendenti() + numeroDipendentiConsorziate;
+	}
+
+	public Map<String, List<Società>> nazione2consorziate() {
+		List<Società> listaSocietà = new LinkedList<Società>();
+		listaSocietà.add(this);
+		Map<String, List<Società>> res = new HashMap<String, List<Società>>();
+		res.put(getNazione(), listaSocietà);
+		for (Società consorziate : imprese.values()) {
+			Map<String, List<Società>> add2res = consorziate.nazione2consorziate();
+			for (Entry<String, List<Società>> consorziate2add : add2res.entrySet()) {
+				if (res.containsKey(consorziate2add.getKey())) {
+					List<Società> tmp = res.get(consorziate2add.getKey());
+					tmp.addAll(consorziate2add.getValue());					
+				}
+			}
+		}
+		return res;
+	}
+}

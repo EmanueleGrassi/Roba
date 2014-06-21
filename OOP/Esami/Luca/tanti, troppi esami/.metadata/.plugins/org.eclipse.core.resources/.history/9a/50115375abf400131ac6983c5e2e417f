@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Consorzio extends Società implements Comparable<Consorzio> {
+	
+	private Map<String, Impresa> imprese;
+
+	public Consorzio(int annoCostituzione, String nazione, String nome) {
+		super(annoCostituzione, nazione, nome);
+		this.imprese = new HashMap<String, Impresa>();
+	}
+
+	public int getAnnoDiCostituzione() {
+		return this.annoDiCostituzione;
+	}
+
+	public String getNazione() {
+		return this.nazione;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void aggiungiConsorziata(Impresa impresa) {
+		/* scrivere il codice di questo metodo (vedi DOMANDA 1) */
+		imprese.put(impresa.getNome(), impresa)
+	}
+
+	public void aggiungiDipendente(Dipendente dipendente) {
+		this.dipendenti.add(dipendente);
+	}
+
+	public int getNumeroDipendenti() {
+		// scrivere il codice di questo metodo (vedi DOMANDA 2)
+	}
+
+	public int compareTo(Consorzio that) {
+		return this.getNome().compareTo(that.getNome());
+	}
+}

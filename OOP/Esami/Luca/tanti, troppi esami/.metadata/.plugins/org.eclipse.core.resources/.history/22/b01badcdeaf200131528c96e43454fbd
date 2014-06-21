@@ -1,0 +1,25 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import esame.Documento;
+
+public class UtilityTest {
+
+	@Before
+	public void setUp() throws Exception {
+		List<Documento> docs = new ArrayList<Documento>();
+		Documento d1 = new Documento("helloWorld", 5, "13/06/2014", );
+	}
+
+	@Test
+	public void test() {
+		
+	}
+
+}

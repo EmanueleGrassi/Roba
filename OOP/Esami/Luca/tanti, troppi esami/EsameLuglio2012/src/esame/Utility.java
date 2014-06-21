@@ -1,0 +1,34 @@
+package esame;
+import java.util.*;
+
+public class Utility 
+{
+	static public Map<Utente, List<Documento>> utente2docs(List<Documento> docs, String nomePermesso) 
+	{
+		Map<Utente, List<Documento>> res = new HashMap<Utente, List<Documento>>();
+		if(docs!=null) {		
+			for(Documento item : docs)
+			{
+				PermessoAccesso temp = item.getPermessoAccesso(nomePermesso);
+				if(temp!=null)
+				{
+					for(Utente itemUtente : temp.getUtenti())
+					{
+						if(res.containsKey(itemUtente))
+						{
+							List<Documento> lis = res.get(itemUtente);
+							lis.add(item);
+						}
+						else
+						{
+							List<Documento> lis = new ArrayList<Documento>();
+							lis.add(item);
+							res.put(itemUtente, lis);
+						}						
+					}
+				}
+			}
+		}		
+		return res;
+	}
+}

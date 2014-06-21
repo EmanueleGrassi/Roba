@@ -1,0 +1,47 @@
+import java.util.*;
+
+abstract class Veicolo
+{
+ public void clacson()
+ {
+	 System.out.println("veicolo");
+ }
+}
+class Auto extends Veicolo
+{
+ public void clacson()
+ {
+	 System.out.println("Auto");
+ }
+}
+class Bicicletta extends Veicolo
+{
+ public void clacson()
+ {
+	 System.out.println("bicibletta");
+ }
+}
+class Tandem extends Bicicletta
+{
+	public void clacson()
+	 {
+		 System.out.println("tandem");
+	 }
+}
+public class Quiz {
+    public static void main(String[] argv) 
+    {
+       List<Veicolo> lis = new ArrayList<Veicolo>();
+       Veicolo v= new Bicicletta();
+       Veicolo a = new Auto();
+       Bicicletta bici= new Tandem();
+       a.clacson();
+       v.clacson();
+       bici.clacson();
+    }
+}
+
+
+
+
+

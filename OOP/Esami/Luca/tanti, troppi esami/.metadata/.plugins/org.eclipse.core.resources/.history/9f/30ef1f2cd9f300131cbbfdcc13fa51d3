@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public abstract class Risorsa {
+	private Utente proprietario;
+	private String nome;
+	private List<Utente> possonoLeggere;
+	private List<Utente> possonoModificare;
+	public Risorsa(String nome, Utente proprietario) {
+		this.nome = nome;
+		this.proprietario = proprietario;
+		this.possonoLeggere = new ArrayList<Utente>();
+		this.possonoModificare = new ArrayList<Utente>();
+	}
+	public Utente getProprietario() {
+		return this.proprietario;
+	}
+	public String getNome() {
+		return this.nome;
+	}
+	public abstract int getDimensioni();
+	
+	public boolean puoLeggere(Utente utente){
+		return this.possonoLeggere.contains(utente);
+	}
+	public boolean puoModificare(Utente utente){
+		return this.possonoModificare.contains(utente);
+	}
+	public void abilitaLettura(Utente utente) {
+		this.possonoLeggere.add(utente);
+	}
+	public void abilitaModifica(Utente utente) {
+		this.possonoModificare.add(utente);
+	}
+}
+

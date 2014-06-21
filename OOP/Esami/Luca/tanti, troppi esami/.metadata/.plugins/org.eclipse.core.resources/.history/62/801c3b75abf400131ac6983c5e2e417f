@@ -1,0 +1,75 @@
+import java.util.*;
+
+public class Impresa extends Società implements Comparable<Impresa> {
+	
+
+	public Impresa(int annoDiCostituzione, String nazione, String nome) {
+		
+		super(annoCostituzione, nazione, nome);
+	}
+
+	public int getAnnoDiCostituzione() {
+		return this.annoDiCostituzione;
+	}
+
+	public String getNazione() {
+		return this.nazione;
+	}
+
+	public void aggiungiDipendente(Dipendente dipendente) {
+		this.dipendenti.add(dipendente);
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public int compareTo(Impresa that) {
+		return this.getNome().compareTo(that.getNome());
+	}
+
+	public int getNumeroDipendenti() {
+		// scrivere il codice di questo metodo (vedi DOMANDA 2)
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + annoDiCostituzione;
+		result = prime * result
+				+ ((dipendenti == null) ? 0 : dipendenti.hashCode());
+		result = prime * result + ((nazione == null) ? 0 : nazione.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Impresa other = (Impresa) obj;
+		if (annoDiCostituzione != other.annoDiCostituzione)
+			return false;
+		if (dipendenti == null) {
+			if (other.dipendenti != null)
+				return false;
+		} else if (!dipendenti.equals(other.dipendenti))
+			return false;
+		if (nazione == null) {
+			if (other.nazione != null)
+				return false;
+		} else if (!nazione.equals(other.nazione))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
+	}
+}
